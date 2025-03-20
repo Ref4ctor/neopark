@@ -1,4 +1,4 @@
-package com.prgrms.be.intermark.domain.musical.controller;
+package com.prgrms.be.intermark.domain.newerd.stadium.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,43 +8,39 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
+import com.prgrms.be.intermark.common.entity.BaseEntity;
+
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "concert_detail_image")
+@Table(name = "stadium_tobe")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
-public class MusicalDetailImage {
+public class StadiumTobe extends BaseEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	@NotBlank
-	@Column(name = "original_file_name", nullable = false)
-	private String originalFileName;
+	@Column(name = "name", nullable = false)
+	private String name;
+
+	@NotBlank
+	@Column(name = "address", nullable = false, unique = true)
+	private String address;
 
 	@NotBlank
 	@Column(name = "image_url", nullable = false, length = 2000)
 	private String imageUrl;
 
-	@Column(name = "is_deleted", nullable = false)
-	private boolean isDeleted;
-
-	private Long concertId;
-
 	@Builder
-	public MusicalDetailImage(Long concertId, String originalFileName, String imageUrl) {
-		this.concertId = concertId;
-		this.originalFileName = originalFileName;
+	public StadiumTobe(String name, String address, String imageUrl) {
+		this.name = name;
+		this.address = address;
 		this.imageUrl = imageUrl;
-		this.isDeleted = false;
-	}
-
-	public void deleteMusicalDetailImage() {
-		this.isDeleted = true;
 	}
 }

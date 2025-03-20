@@ -4,7 +4,7 @@ import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import com.prgrms.be.intermark.domain.concert.model.ViewRating;
+import com.prgrms.be.intermark.domain.musical.model.ViewRating;
 
 import lombok.Builder;
 

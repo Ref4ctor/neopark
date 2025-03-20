@@ -1,7 +1,7 @@
 jwt:
   secret:
-    access: "w7uGmFxgOlFS9T+gFynHk7jB6mI/eA9WgjG5o9gB8uI="
-    refresh: "w7uGmFxgOlFS9T+gFynHk7jB6mI/eA9WgjG5o9gB8uI="
+    access: "w7uGmFxgOlFS9T+gFynHk7jB6mI/eA9WgjG5o9gB8uI=w7uGmFxgOlFS9T+gFynHk7jB6mI/eA9WgjG5o9gB8uI="
+    refresh: "w7uGmFxgOlFS9T+gFynHk7jB6mI/eA9WgjG5o9gB8uI=w7uGmFxgOlFS9T+gFynHk7jB6mI/eA9WgjG5o9gB8uI="
 
 local:
   images:
@@ -16,6 +16,10 @@ spring:
     url: jdbc:mysql://localhost:3308/mydatabase    # 테스트용 DB URL (실제 테스트 환경에 맞게 수정)
     username: dbuser                                 # 테스트용 DB 사용자
     password: dbpassword                             # 테스트용 DB 비밀번호
+
+    profiles:
+      include: oauth
+
   # 보안 관련 설정은 테스트에 필요없으므로 주석 처리
   # security:
   #   oauth2:
@@ -27,7 +31,7 @@ spring:
   #           scope: profile,email
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: create-drop
     properties:
       hibernate:
         show-sql: true

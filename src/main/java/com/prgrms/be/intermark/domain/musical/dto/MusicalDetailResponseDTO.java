@@ -4,9 +4,9 @@ import java.time.LocalDate;
 import java.util.List;
 
 import com.prgrms.be.intermark.domain.actor.dto.ActorResponseDTO;
-import com.prgrms.be.intermark.domain.concert.model.Genre;
+import com.prgrms.be.intermark.domain.musical.model.Genre;
 import com.prgrms.be.intermark.domain.musical.model.Musical;
-import com.prgrms.be.intermark.domain.concert.model.ViewRating;
+import com.prgrms.be.intermark.domain.musical.model.ViewRating;
 
 import lombok.Builder;
 

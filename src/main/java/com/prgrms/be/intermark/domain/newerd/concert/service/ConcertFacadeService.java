@@ -22,10 +22,10 @@ import com.prgrms.be.intermark.domain.musical.model.Musical;
 import com.prgrms.be.intermark.domain.musical.service.MusicalDetailImageService;
 import com.prgrms.be.intermark.domain.musical.service.MusicalService;
 import com.prgrms.be.intermark.domain.musical_seat.service.MusicalSeatService;
-import com.prgrms.be.intermark.domain.newerd.actor.model.Actor;
-import com.prgrms.be.intermark.domain.newerd.actor.service.ActorService;
+import com.prgrms.be.intermark.domain.newerd.actor.model.ActorTobe;
+import com.prgrms.be.intermark.domain.newerd.actor.service.ActorServiceTobe;
 import com.prgrms.be.intermark.domain.newerd.castinginfo.model.CastingInfo;
-import com.prgrms.be.intermark.domain.newerd.castinginfo.repository.CastingInfoRepository;
+import com.prgrms.be.intermark.domain.newerd.castinginfo.repository.CastingInfoRepositoryTobe;
 import com.prgrms.be.intermark.domain.newerd.concert.dto.ConcertCreateRequestDTO;
 import com.prgrms.be.intermark.domain.newerd.concert.model.Concert;
 import com.prgrms.be.intermark.domain.newerd.concert.model.ConcertDetailImage;
@@ -59,12 +59,12 @@ public class ConcertFacadeService {
 
 	private final SeatService seatService;
 
-	private final ActorService actorService;
+	private final ActorServiceTobe actorService;
 	private final StadiumService stadiumService;
 	private final UserService userService;
 	private final ConcertService concertService;
 	private final ConcertDetailImageService concertDetailImageService;
-	private final CastingInfoRepository castingInfoRepository;
+	private final CastingInfoRepositoryTobe castingInfoRepository;
 
 	@Transactional
 	public Long create(
@@ -125,7 +125,7 @@ public class ConcertFacadeService {
 		List<CastingInfo> castingInfoList = concertCreateRequestDTO.actorIds()
 			.stream()
 			.map(actorId -> {
-				Actor actor = actorService.findById(actorId);
+				ActorTobe actor = actorService.findById(actorId);
 				return CastingInfo.builder()
 					.actorId(actor.getId())
 					.concertId(concertId)

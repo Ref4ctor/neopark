@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 import com.prgrms.be.intermark.domain.newerd.castinginfo.model.CastingInfo;
 
 @Repository
-public interface CastingInfoRepository extends JpaRepository<CastingInfo, Long> {
+public interface CastingInfoRepositoryTobe extends JpaRepository<CastingInfo, Long> {
 }
