@@ -20,8 +20,7 @@ public class ConcertScheduleValidationService {
 	private final ConcertScheduleRepository concertScheduleRepository;
 
 	public ConcertSchedule findAvailableConcertSchedule(Long scheduleId) {
-		LocalDateTime now = LocalDateTime.now();
-		return concertScheduleRepository.findByIdAndStartTimeLessThanEqualAndEndTimeGreaterThanEqual(scheduleId,now,now)
+		return concertScheduleRepository.findByIdAndStartTimeLessThan(scheduleId, LocalDateTime.now())
 			.orElseThrow(() -> new EntityNotFoundException("존재하지 않거나 이미 지난 스케줄입니다"));
 	}
 }
