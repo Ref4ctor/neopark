@@ -1,16 +1,14 @@
 package com.prgrms.be.intermark.domain.newerd.user.service;
 
-import java.util.Optional;
-
 import javax.persistence.EntityNotFoundException;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.prgrms.be.intermark.domain.newerd.user.model.UserTobe;
 import com.prgrms.be.intermark.domain.newerd.user.repository.UserRepositoryTobe;
-import com.prgrms.be.intermark.domain.user.SocialType;
-import com.prgrms.be.intermark.domain.user.User;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -40,8 +38,8 @@ public class UserValidationService {
 		}
 	}
 
-	public Optional<User> findByProviderAndProviderId(SocialType social, String socialId) {
-		return userRepositoryTobe.findBySocialTypeAndSocialId(social, socialId);
+	public Page<UserTobe> findAllActiveUsers(Pageable pageable) {
+		return userRepositoryTobe.findByDeletedFalse(pageable);
 	}
 
 }

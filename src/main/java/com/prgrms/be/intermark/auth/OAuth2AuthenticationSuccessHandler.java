@@ -22,21 +22,18 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.prgrms.be.intermark.auth.dto.TokenResponseDTO;
 import com.prgrms.be.intermark.common.dto.ErrorResponse;
 import com.prgrms.be.intermark.domain.user.dto.UserIdAndRoleDTO;
-import com.prgrms.be.intermark.domain.user.service.UserService;
 import com.prgrms.be.intermark.util.CookieUtil;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
+@RequiredArgsConstructor
 public class OAuth2AuthenticationSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
 
-	private final UserService userService;
+	private final CustomOauth2UserService customOauth2UserService;
 	private final TokenProvider tokenProvider;
-
-	public OAuth2AuthenticationSuccessHandler(UserService userService, TokenProvider tokenProvider) {
-		this.userService = userService;
-		this.tokenProvider = tokenProvider;
-	}
+	private final TokenService tokenService;
 
 	@Override
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
@@ -51,7 +48,8 @@ public class OAuth2AuthenticationSuccessHandler extends SimpleUrlAuthenticationS
 
 			log.info("{}", principal.getAttributes());
 			try {
-				UserIdAndRoleDTO userIdAndRoleDTO = userService.join(principal, social);
+				//로그인
+				UserIdAndRoleDTO userIdAndRoleDTO = customOauth2UserService.join(principal, social);
 				String aceessToken = tokenProvider.createAceessToken(userIdAndRoleDTO.userId(),
 					userIdAndRoleDTO.userRole());
 				log.info(aceessToken);
@@ -59,7 +57,8 @@ public class OAuth2AuthenticationSuccessHandler extends SimpleUrlAuthenticationS
 				String refreshToken = tokenProvider.createRefreshToken(userIdAndRoleDTO.userId(),
 					userIdAndRoleDTO.userRole());
 
-				userService.assignRefreshToken(refreshToken);
+				//refresh 갱신
+				tokenService.assignRefreshToken(refreshToken);
 
 				CookieUtil.deleteCookieByName(REFRESH_TOKEN_COOKIE_NAME, request, response);
 				CookieUtil.addCookie(REFRESH_TOKEN_COOKIE_NAME, refreshToken, REFRESH_TOKEN_COOKIE_MAX_AGE, response);

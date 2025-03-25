@@ -1,9 +1,5 @@
 package com.prgrms.be.intermark.config;
 
-import com.prgrms.be.intermark.auth.*;
-import com.prgrms.be.intermark.domain.user.UserRole;
-import com.prgrms.be.intermark.domain.user.repository.UserRepository;
-import com.prgrms.be.intermark.domain.user.service.UserService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,29 +15,28 @@ import com.prgrms.be.intermark.auth.OAuth2AuthenticationSuccessHandler;
 import com.prgrms.be.intermark.auth.OAuthAccessDeniedHandler;
 import com.prgrms.be.intermark.auth.TokenAuthenticationFilter;
 import com.prgrms.be.intermark.auth.TokenProvider;
+import com.prgrms.be.intermark.auth.TokenService;
 import com.prgrms.be.intermark.domain.user.UserRole;
 import com.prgrms.be.intermark.domain.user.repository.UserRepository;
-import com.prgrms.be.intermark.domain.user.service.UserService;
 
 @Configuration
 @EnableWebSecurity
 public class SpringSecurityConfig {
 	private final CustomOauth2UserService customOauth2UserService;
-	private final UserService userService;
 	private final TokenProvider tokenProvider;
 	@Value("${jwt.secret.access}")
 	private String accessSecret;
 	@Value("${jwt.secret.refresh}")
 	private String refreshSecret;
 	private final UserRepository userRepository;
+	private final TokenService tokenService;
 
-	public SpringSecurityConfig(CustomOauth2UserService customOauth2UserService, UserService userService,
-		TokenProvider tokenProvider,
-		UserRepository userRepository) {
+	public SpringSecurityConfig(CustomOauth2UserService customOauth2UserService, TokenProvider tokenProvider,
+		UserRepository userRepository, TokenService tokenService) {
 		this.customOauth2UserService = customOauth2UserService;
-		this.userService = userService;
 		this.tokenProvider = tokenProvider;
 		this.userRepository = userRepository;
+		this.tokenService = tokenService;
 	}
 
 	@Bean
@@ -87,14 +82,14 @@ public class SpringSecurityConfig {
 			.userInfoEndpoint()
 			.userService(customOauth2UserService)
 			.and()
-			.successHandler(oAuth2AuthenticationSuccessHandler(userService));
+			.successHandler(oAuth2AuthenticationSuccessHandler(customOauth2UserService));
 		return httpSecurity.addFilterBefore(tokenAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
 			.build();
 	}
 
 	@Bean
-	public OAuth2AuthenticationSuccessHandler oAuth2AuthenticationSuccessHandler(UserService userService) {
-		return new OAuth2AuthenticationSuccessHandler(userService, tokenProvider);
+	public OAuth2AuthenticationSuccessHandler oAuth2AuthenticationSuccessHandler(CustomOauth2UserService userService) {
+		return new OAuth2AuthenticationSuccessHandler(userService, tokenProvider, tokenService);
 	}
 
 	@Bean

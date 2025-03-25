@@ -17,6 +17,9 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.lang.Nullable;
 
+import com.prgrms.be.intermark.common.entity.BaseEntity;
+import com.prgrms.be.intermark.domain.newerd.user.dto.UserResponse;
+
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,7 +28,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "user_tobe")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
-public class UserTobe {
+public class UserTobe extends BaseEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -64,5 +67,24 @@ public class UserTobe {
 	@Nullable
 	@Column(name = "birth")
 	private LocalDate birth;
+
+	public void activateUser() {
+		this.deleted = false;
+	}
+
+	public void deactivateUser() {
+		this.deleted = true;
+	}
+
+	public void updateRole(UserRoleTobe role) {
+		this.role = role;
+	}
+
+	public UserResponse toUserResponse() {
+		return UserResponse.builder()
+			.email(email)
+			.nickname(nickname)
+			.build();
+	}
 
 }
