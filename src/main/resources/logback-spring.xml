@@ -9,7 +9,7 @@
     <logger name="org.apache.http" level="DEBUG"/>
 
     <!-- WARN 레벨 이상의 로그(주의, 에러 등) 출력 -->
-    <root level="WARN">
+    <root level="INFO">
         <appender-ref ref="STDOUT"/>
     </root>
 </configuration>
