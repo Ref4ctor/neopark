@@ -62,19 +62,15 @@ spring:
       # connection-test-query: SELECT 1  # JDBC4 이상에서는 불필요하나, 필요시 활성 커넥션 검증을 위해 사용
   jpa:
     hibernate:
-      ddl-auto: create-drop
-      show-sql: true
+      ddl-auto: update
+      show-sql: false
     defer-datasource-initialization: true
     properties:
       hibernate:
-        show-sql: true
+        show-sql: false
         format_sql: true
         dialect: org.hibernate.dialect.MySQL8Dialect
     generate-ddl: true
-  sql:
-    init:
-      mode: always
-      data-locations: classpath:insert.sql
 
   security:
     oauth2:
@@ -86,3 +82,9 @@ spring:
             scope:
               - "email"
               - "profile"
+
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: OFF
+    org.hibernate: OFF

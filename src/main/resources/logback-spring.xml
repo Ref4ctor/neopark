@@ -1,44 +1,15 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<configuration scan="true">
-    <conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter"/>
-
-    <!-- AWS 관련 설정 주석 처리
-    <springProperty name="AWS_ACCESS_KEY" source="cloud.aws.credentials.accessKey"/>
-    <springProperty name="AWS_SECRET_KEY" source="cloud.aws.credentials.secretKey"/>
-    <springProperty name="REGION" source="cloud.aws.region.static"/>
-    -->
-
-    <property name="LOG_PATTERN"
-              value="%clr(%d{yyyyMMdd HH:mm:ss.SSS}){magenta} %clr([%thread]){blue} %clr(%-5level){} %clr([%logger{0}:%line]){cyan} : %msg %n"/>
-
+<configuration>
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <pattern>${LOG_PATTERN}</pattern>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
         </encoder>
     </appender>
 
-    <!-- AWS 로그 앱펜더 주석 처리
-    <appender name="AWS_LOG" class="ca.pjer.logback.AwsLogsAppender">
-        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
-            <level>INFO</level>
-        </filter>
-        <layout>
-            <pattern>[%thread] [%date] [%level] [%file:%line] - %msg%n</pattern>
-        </layout>
-        <logGroupName>InterMark</logGroupName>
-        <logStreamUuidPrefix>InterMark-</logStreamUuidPrefix>
-        <logRegion>${REGION}</logRegion>
-        <maxBatchLogEvents>50</maxBatchLogEvents>
-        <maxFlushTimeMillis>30000</maxFlushTimeMillis>
-        <maxBlockTimeMillis>5000</maxBlockTimeMillis>
-        <retentionTimeDays>0</retentionTimeDays>
-        <accessKeyId>${AWS_ACCESS_KEY}</accessKeyId>
-        <secretAccessKey>${AWS_SECRET_KEY}</secretAccessKey>
-    </appender>
-    -->
+    <!-- Apache HTTP 디버그 로그 추가 -->
+    <logger name="org.apache.http" level="DEBUG"/>
 
-    <root level="debug">
+    <!-- WARN 레벨 이상의 로그(주의, 에러 등) 출력 -->
+    <root level="WARN">
         <appender-ref ref="STDOUT"/>
-        <!-- <appender-ref ref="AWS_LOG"/> -->
     </root>
 </configuration>
