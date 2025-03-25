@@ -10,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -43,7 +42,7 @@ public class BookingController {
 		).body(ResponseDTO.success());
 	}
 
-	@PatchMapping("/{bookingId}")
+	@PostMapping("/{bookingId}:cancel")
 	public ResponseEntity<ResponseDTO<?>> cancelConcert(@AuthenticationPrincipal User user,
 		@PathVariable Long bookingId) {
 		bookingService.cancelConcert(Long.valueOf(user.getUsername()), bookingId);
