@@ -17,6 +17,11 @@ public class UserValidationService {
 
 	private final UserRepositoryTobe userRepositoryTobe;
 
+	public UserTobe findUser(Long userId) {
+		return userRepositoryTobe.findById(userId)
+			.orElseThrow(() -> new EntityNotFoundException("존재하지 않은 유저입니다."));
+	}
+
 	public UserTobe findActiveUser(Long userId) {
 		return userRepositoryTobe.findByIdAndDeletedFalse(userId)
 			.orElseThrow(() -> new EntityNotFoundException("존재하지 않은 유저입니다."));
