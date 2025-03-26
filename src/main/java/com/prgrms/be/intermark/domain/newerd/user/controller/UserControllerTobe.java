@@ -57,6 +57,6 @@ public class UserControllerTobe {
 	public ResponseEntity<Object> updateRole(@PathVariable Long userId,
 		@Valid @RequestBody RoleUpdateRequest roleUpdateRequest) {
 		userServiceTobe.updateRole(userId, roleUpdateRequest.role());
-		return ResponseEntity.ok().build();
+		return ResponseEntity.ok().body(ResponseDTO.success());
 	}
 }
