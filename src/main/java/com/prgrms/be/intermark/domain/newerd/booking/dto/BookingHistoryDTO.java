@@ -5,12 +5,12 @@ import com.prgrms.be.intermark.domain.newerd.concert.model.ConcertTobe;
 import com.prgrms.be.intermark.domain.newerd.concertschedule.model.ConcertScheduleTobe;
 import com.prgrms.be.intermark.domain.newerd.seatInfo.model.SeatInfoTobe;
 import com.prgrms.be.intermark.domain.newerd.stadium.model.StadiumTobe;
-import com.prgrms.be.intermark.domain.newerd.user.model.UserTobe;
+import com.prgrms.be.intermark.domain.newerd.user.model.User;
 
 public record BookingHistoryDTO(
 	Long bookingId,
 	BookingStatus bookingStatus,
-	UserTobe user,
+	User user,
 	ConcertTobe concert,
 	ConcertScheduleTobe concertScheduleTobe,
 	SeatInfoTobe seatInfo,

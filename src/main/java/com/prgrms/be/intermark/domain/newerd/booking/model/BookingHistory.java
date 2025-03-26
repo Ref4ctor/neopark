@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 import com.prgrms.be.intermark.common.entity.BaseEntity;
 import com.prgrms.be.intermark.domain.newerd.booking.dto.BookingHistoryResponse;
-import com.prgrms.be.intermark.domain.newerd.user.model.UserTobe;
+import com.prgrms.be.intermark.domain.newerd.user.model.User;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -57,7 +57,7 @@ public class BookingHistory extends BaseEntity {
 		this.status = BookingStatus.CANCELLED;
 	}
 
-	public BookingHistoryResponse toBookingHistoryResponse(UserTobe user) {
+	public BookingHistoryResponse toBookingHistoryResponse(User user) {
 		return BookingHistoryResponse.builder()
 			.bookingStatus(status)
 			.nickname(user.getNickname())

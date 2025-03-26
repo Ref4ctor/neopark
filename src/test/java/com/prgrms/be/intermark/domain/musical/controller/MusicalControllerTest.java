@@ -65,9 +65,9 @@
 //import com.prgrms.be.intermark.domain.concert.model.ViewRating;
 //import com.prgrms.be.intermark.domain.musical.service.MusicalFacadeService;
 //import com.prgrms.be.intermark.domain.stadium.model.Stadium;
-//import com.prgrms.be.intermark.domain.user.SocialType;
-//import com.prgrms.be.intermark.domain.user.User;
-//import com.prgrms.be.intermark.domain.user.UserRole;
+//import com.prgrms.be.intermark.domain.newerd.user.model.SocialType;
+//import com.prgrms.be.intermark.domain.newerd.user.model.User;
+//import com.prgrms.be.intermark.domain.newerd.user.model.UserRole;
 //import com.prgrms.be.intermark.util.TestUtil;
 //
 //@WebMvcTest(MusicalController.class)

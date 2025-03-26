@@ -16,9 +16,9 @@ import com.prgrms.be.intermark.domain.schedule_seat.model.ScheduleSeat;
 import com.prgrms.be.intermark.domain.seat.model.Seat;
 import com.prgrms.be.intermark.domain.seatgrade.model.SeatGrade;
 import com.prgrms.be.intermark.domain.stadium.model.Stadium;
-import com.prgrms.be.intermark.domain.user.SocialType;
-import com.prgrms.be.intermark.domain.user.User;
-import com.prgrms.be.intermark.domain.user.UserRole;
+import com.prgrms.be.intermark.domain.newerd.user.model.SocialType;
+import com.prgrms.be.intermark.domain.newerd.user.model.User;
+import com.prgrms.be.intermark.domain.newerd.user.model.UserRole;
 
 public class TestUtil {
 
@@ -49,7 +49,7 @@ public class TestUtil {
 			.email(email)
 			.build();
 		if (isDeleted) {
-			user.deleteUser();
+			user.deactivateUser();
 		}
 		user.setBirth(birth);
 		return user;

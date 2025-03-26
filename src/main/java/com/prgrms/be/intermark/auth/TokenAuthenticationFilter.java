@@ -15,8 +15,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import com.prgrms.be.intermark.domain.user.User;
-import com.prgrms.be.intermark.domain.user.repository.UserRepository;
+import com.prgrms.be.intermark.domain.newerd.user.model.User;
+import com.prgrms.be.intermark.domain.newerd.user.repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -45,7 +45,7 @@ public class TokenAuthenticationFilter extends OncePerRequestFilter {
 			Long userIdInToken = Long.parseLong(userInToken.getUsername()); // 사용자 ID를 추출합니다.
 
 			// DB에서 해당 사용자를 조회합니다.
-			Optional<User> optionalUserInDB = userRepository.findByIdAndIsDeletedFalse(userIdInToken);
+			Optional<User> optionalUserInDB = userRepository.findByIdAndDeletedFalse(userIdInToken);
 			if (optionalUserInDB.isPresent()) {
 				User userInDB = optionalUserInDB.get();
 

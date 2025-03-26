@@ -22,7 +22,7 @@ public interface BookingHistoryRepository extends JpaRepository<BookingHistory, 
 	@Query(value = """
 		SELECT new com.prgrms.be.intermark.domain.newerd.booking.dto.BookingHistoryDTO(b.id, b.status, u, c, cs, s, st)
 		FROM BookingHistory b
-		JOIN FETCH UserTobe u ON b.userId = u.id
+		JOIN FETCH User u ON b.userId = u.id
 		JOIN FETCH ConcertTobe c ON b.concertId = c.id
 		JOIN FETCH ConcertScheduleTobe  cs ON b.concertScheduleId = cs.id
 		JOIN FETCH SeatInfoTobe s ON b.seatId = s.id
@@ -33,7 +33,7 @@ public interface BookingHistoryRepository extends JpaRepository<BookingHistory, 
 		countQuery = """
 			SELECT COUNT(b)
 			FROM BookingHistory b
-			JOIN FETCH UserTobe u ON b.userId = u.id
+			JOIN FETCH User u ON b.userId = u.id
 			JOIN FETCH ConcertTobe c ON b.concertId = c.id
 			JOIN FETCH ConcertScheduleTobe  cs ON b.concertScheduleId = cs.id
 			JOIN FETCH SeatInfoTobe s ON b.seatId = s.id
@@ -47,7 +47,7 @@ public interface BookingHistoryRepository extends JpaRepository<BookingHistory, 
 	@Query(value = """
 		SELECT new com.prgrms.be.intermark.domain.newerd.booking.dto.BookingHistoryDTO(b.id, b.status, u, c, cs, s, st)
 		FROM BookingHistory b
-		JOIN FETCH UserTobe u ON b.userId = u.id
+		JOIN FETCH User u ON b.userId = u.id
 		JOIN FETCH ConcertTobe c ON b.concertId = c.id
 		JOIN FETCH ConcertScheduleTobe  cs ON b.concertScheduleId = cs.id
 		JOIN FETCH SeatInfoTobe s ON b.seatId = s.id

@@ -9,9 +9,9 @@ import javax.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.prgrms.be.intermark.domain.user.User;
-import com.prgrms.be.intermark.domain.user.UserRole;
-import com.prgrms.be.intermark.domain.user.repository.UserRepository;
+import com.prgrms.be.intermark.domain.newerd.user.model.User;
+import com.prgrms.be.intermark.domain.newerd.user.model.UserRole;
+import com.prgrms.be.intermark.domain.newerd.user.repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

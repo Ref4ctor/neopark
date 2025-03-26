@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -17,18 +18,22 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.lang.Nullable;
 
-import com.prgrms.be.intermark.common.entity.BaseEntity;
 import com.prgrms.be.intermark.domain.newerd.user.dto.UserResponse;
 
 import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "user")
+@Builder
+@Table(name = "user_tobe",
+	uniqueConstraints = {@UniqueConstraint(name = "social_uk", columnNames = {"social_type", "social_id"})})
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
-public class UserTobe extends BaseEntity {
+public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -46,7 +51,7 @@ public class UserTobe extends BaseEntity {
 	@NotNull
 	@Enumerated(value = EnumType.STRING)
 	@Column(name = "social_type", nullable = false)
-	private SocialTypeTobe socialTypeTobe;
+	private SocialType socialType;
 
 	@NotBlank
 	@Column(name = "social_id", nullable = false, length = 64)
@@ -55,7 +60,7 @@ public class UserTobe extends BaseEntity {
 	@NotNull
 	@Enumerated(value = EnumType.STRING)
 	@Column(name = "role", nullable = false, length = 15)
-	private UserRoleTobe role;
+	private UserRole role;
 
 	@Nullable
 	@Column(name = "refresh_token", unique = true)
@@ -72,11 +77,27 @@ public class UserTobe extends BaseEntity {
 		this.deleted = false;
 	}
 
+	public void setRefreshToken(String refreshToken) {
+		this.refreshToken = refreshToken;
+	}
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+
+	public void setBirth(@Nullable LocalDate birth) {
+		this.birth = birth;
+	}
+
+	public String getUserRoleKey() {
+		return role.getKey();
+	}
+
 	public void deactivateUser() {
 		this.deleted = true;
 	}
 
-	public void updateRole(UserRoleTobe role) {
+	public void updateRole(UserRole role) {
 		this.role = role;
 	}
 

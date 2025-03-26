@@ -27,9 +27,9 @@
 //import com.prgrms.be.intermark.domain.ticket.model.Ticket;
 //import com.prgrms.be.intermark.domain.ticket.model.TicketStatus;
 //import com.prgrms.be.intermark.domain.ticket.repository.TicketRepository;
-//import com.prgrms.be.intermark.domain.user.SocialType;
-//import com.prgrms.be.intermark.domain.user.User;
-//import com.prgrms.be.intermark.domain.user.UserRole;
+//import com.prgrms.be.intermark.domain.newerd.user.model.SocialType;
+//import com.prgrms.be.intermark.domain.newerd.user.model.User;
+//import com.prgrms.be.intermark.domain.newerd.user.model.UserRole;
 //import com.prgrms.be.intermark.domain.user.repository.UserRepository;
 //import com.prgrms.be.intermark.domain.util.*;
 //import com.prgrms.be.intermark.util.TestUtil;

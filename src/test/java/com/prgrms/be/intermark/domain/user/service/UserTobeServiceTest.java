@@ -3,10 +3,10 @@
 // import com.prgrms.be.intermark.auth.CustomUserPrincipal;
 // import com.prgrms.be.intermark.auth.TokenProvider;
 // import com.prgrms.be.intermark.common.dto.page.PageResponseDTO;
-// import com.prgrms.be.intermark.domain.user.SocialType;
-// import com.prgrms.be.intermark.domain.user.User;
-// import com.prgrms.be.intermark.domain.user.UserRole;
-// import com.prgrms.be.intermark.domain.user.dto.UserIdAndRoleDTO;
+// import com.prgrms.be.intermark.domain.newerd.user.model.SocialType;
+// import com.prgrms.be.intermark.domain.newerd.user.model.User;
+// import com.prgrms.be.intermark.domain.newerd.user.model.UserRole;
+// import com.prgrms.be.intermark.domain.newerd.user.dto.UserIdAndRoleDTO;
 // import com.prgrms.be.intermark.domain.user.dto.UserInfoResponseDTO;
 // import com.prgrms.be.intermark.domain.user.repository.UserRepository;
 // import org.hamcrest.MatcherAssert;

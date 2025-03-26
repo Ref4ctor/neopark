@@ -21,7 +21,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.prgrms.be.intermark.auth.dto.TokenResponseDTO;
 import com.prgrms.be.intermark.common.dto.ErrorResponse;
-import com.prgrms.be.intermark.domain.user.dto.UserIdAndRoleDTO;
+import com.prgrms.be.intermark.domain.newerd.user.dto.UserIdAndRoleDTO;
 import com.prgrms.be.intermark.util.CookieUtil;
 
 import lombok.RequiredArgsConstructor;

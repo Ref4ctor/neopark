@@ -3,6 +3,7 @@ package com.prgrms.be.intermark.config;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -16,11 +17,12 @@ import com.prgrms.be.intermark.auth.OAuthAccessDeniedHandler;
 import com.prgrms.be.intermark.auth.TokenAuthenticationFilter;
 import com.prgrms.be.intermark.auth.TokenProvider;
 import com.prgrms.be.intermark.auth.TokenService;
-import com.prgrms.be.intermark.domain.user.UserRole;
-import com.prgrms.be.intermark.domain.user.repository.UserRepository;
+import com.prgrms.be.intermark.domain.newerd.user.model.UserRole;
+import com.prgrms.be.intermark.domain.newerd.user.repository.UserRepository;
 
 @Configuration
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SpringSecurityConfig {
 	private final CustomOauth2UserService customOauth2UserService;
 	private final TokenProvider tokenProvider;
@@ -68,7 +70,7 @@ public class SpringSecurityConfig {
 				"/", "/css/**", "/images/**", "/js/**", "/h2-console/**", "/login**", "/favicon.ico")
 			.permitAll()
 			.antMatchers("/api/v1/**")
-			.hasAnyAuthority(UserRole.ROLE_USER.getKey(), UserRole.ROLE_ADMIN.getKey(), UserRole.ROLE_SELLER.getKey())
+			.hasAnyAuthority(UserRole.ROLE_USER.getKey(), UserRole.ROLE_ADMIN.getKey())
 			.anyRequest()
 			.authenticated()
 			.and()

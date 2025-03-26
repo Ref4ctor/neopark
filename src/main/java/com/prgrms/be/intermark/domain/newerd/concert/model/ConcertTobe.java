@@ -22,7 +22,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "Concert")
+@Table(name = "concert")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 public class ConcertTobe extends BaseEntity {
@@ -112,6 +112,7 @@ public class ConcertTobe extends BaseEntity {
 
 	public ConcertResponse createResponse() {
 		return ConcertResponse.builder()
+			.id(id)
 			.title(title)
 			.viewRating(viewRating)
 			.genre(genre)

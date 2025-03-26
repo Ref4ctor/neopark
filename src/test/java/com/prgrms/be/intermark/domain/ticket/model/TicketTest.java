@@ -1,7 +1,6 @@
 package com.prgrms.be.intermark.domain.ticket.model;
 
 import static com.prgrms.be.intermark.util.TestUtil.*;
-import static org.assertj.core.api.Assertions.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -16,9 +15,9 @@ import com.prgrms.be.intermark.domain.schedule.model.Schedule;
 import com.prgrms.be.intermark.domain.seat.model.Seat;
 import com.prgrms.be.intermark.domain.seatgrade.model.SeatGrade;
 import com.prgrms.be.intermark.domain.stadium.model.Stadium;
-import com.prgrms.be.intermark.domain.user.SocialType;
-import com.prgrms.be.intermark.domain.user.User;
-import com.prgrms.be.intermark.domain.user.UserRole;
+import com.prgrms.be.intermark.domain.newerd.user.model.SocialType;
+import com.prgrms.be.intermark.domain.newerd.user.model.User;
+import com.prgrms.be.intermark.domain.newerd.user.model.UserRole;
 
 class TicketTest {
 

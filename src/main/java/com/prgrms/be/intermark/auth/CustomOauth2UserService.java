@@ -12,11 +12,11 @@ import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.prgrms.be.intermark.domain.user.SocialType;
-import com.prgrms.be.intermark.domain.user.User;
-import com.prgrms.be.intermark.domain.user.UserRole;
-import com.prgrms.be.intermark.domain.user.dto.UserIdAndRoleDTO;
-import com.prgrms.be.intermark.domain.user.repository.UserRepository;
+import com.prgrms.be.intermark.domain.newerd.user.dto.UserIdAndRoleDTO;
+import com.prgrms.be.intermark.domain.newerd.user.model.SocialType;
+import com.prgrms.be.intermark.domain.newerd.user.model.User;
+import com.prgrms.be.intermark.domain.newerd.user.model.UserRole;
+import com.prgrms.be.intermark.domain.newerd.user.repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -41,7 +41,7 @@ public class CustomOauth2UserService extends DefaultOAuth2UserService {
 		String socialId = oAuth2User.getName();
 
 		//회원인지 체크
-		Optional<User> userAlreadyExist = userRepository.findBySocialTypeAndSocialIdAndIsDeletedFalse(socialType,
+		Optional<User> userAlreadyExist = userRepository.findBySocialTypeAndSocialIdAndDeletedFalse(socialType,
 			socialId);
 		if (userAlreadyExist.isPresent()) {
 			UserRole role = userAlreadyExist.get().getRole();

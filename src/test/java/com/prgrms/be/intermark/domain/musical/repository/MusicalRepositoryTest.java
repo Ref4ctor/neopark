@@ -22,7 +22,7 @@ import com.prgrms.be.intermark.domain.musical.model.Musical;
 import com.prgrms.be.intermark.domain.musical.model.ViewRating;
 import com.prgrms.be.intermark.domain.stadium.model.Stadium;
 import com.prgrms.be.intermark.domain.stadium.repository.StadiumRepository;
-import com.prgrms.be.intermark.domain.user.User;
+import com.prgrms.be.intermark.domain.newerd.user.model.User;
 import com.prgrms.be.intermark.domain.user.repository.UserRepository;
 import com.prgrms.be.intermark.domain.util.MusicalProvider;
 import com.prgrms.be.intermark.domain.util.StadiumProvider;

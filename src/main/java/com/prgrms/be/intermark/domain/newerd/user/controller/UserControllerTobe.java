@@ -5,6 +5,7 @@ import javax.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -51,7 +52,7 @@ public class UserControllerTobe {
 
 	}
 
-	//TODO 관리자만 가능하도록
+	@PreAuthorize("hasRole('ADMIN')")
 	@PatchMapping("/{userId}")
 	public ResponseEntity<Object> updateRole(@PathVariable Long userId,
 		@Valid @RequestBody RoleUpdateRequest roleUpdateRequest) {

@@ -15,7 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.prgrms.be.intermark.auth.dto.TokenResponseDTO;
-import com.prgrms.be.intermark.domain.user.UserRole;
+import com.prgrms.be.intermark.domain.newerd.user.model.UserRole;
 import com.prgrms.be.intermark.util.CookieUtil;
 
 import io.jsonwebtoken.Claims;

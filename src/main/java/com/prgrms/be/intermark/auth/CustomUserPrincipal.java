@@ -8,7 +8,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 
-import com.prgrms.be.intermark.domain.user.UserRole;
+import com.prgrms.be.intermark.domain.newerd.user.model.UserRole;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

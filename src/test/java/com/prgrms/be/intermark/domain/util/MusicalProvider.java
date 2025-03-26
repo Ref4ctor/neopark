@@ -6,7 +6,7 @@ import com.prgrms.be.intermark.domain.musical.model.Genre;
 import com.prgrms.be.intermark.domain.musical.model.Musical;
 import com.prgrms.be.intermark.domain.musical.model.ViewRating;
 import com.prgrms.be.intermark.domain.stadium.model.Stadium;
-import com.prgrms.be.intermark.domain.user.User;
+import com.prgrms.be.intermark.domain.newerd.user.model.User;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
