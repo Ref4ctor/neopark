@@ -14,7 +14,7 @@ services:
     restart: always
 
   backend:
-    image: neopark:latest
+    image: ghcr.io/jielee1/neopark:latest
     depends_on:
       - mysql
     env_file:
