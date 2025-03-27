@@ -1,6 +1,7 @@
 HELP.md
 .gradle
 build/
+./img
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
@@ -33,6 +34,7 @@ out/
 /nbdist/
 /.nb-gradle/
 
+./redis*
 
 .env*
 img/*
@@ -41,4 +43,4 @@ img/*
 
 ### 환경변수 설정파일 ###
 ### 원격 저장소에 절대올라가면 안됨 ###
-spring.env
+./spring.env

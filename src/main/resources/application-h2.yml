@@ -21,10 +21,8 @@ local:
 spring:
   data:
     redis:
-      hosts:
-        - 127.0.0.1:6371
-        - 127.0.0.1:6372
-        - 127.0.0.1:6373
+      host: "${REDIS_HOST:127.0.0.1}"
+      port: "${REDIS_PORT:6379}"
 
   config:
     import:
