@@ -66,7 +66,6 @@ jobs:
           key: ${{secrets.SSH_KEY}}
           script: |
             cd ./neopark
-            mkdir ./img
             mkdir -p ./env & echo "${{secrets.SPRING_ENV}}" > ./env/spring.env
             docker-compose stop
             docker-compose rm ${{secrets.SERVICES_EXCEPT_DB}}
