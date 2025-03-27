@@ -66,6 +66,9 @@ jobs:
           key: ${{secrets.SSH_KEY}}
           script: |
             cd ./neopark
+            echo "${{ secrets.GHCR_TOKEN }}" | docker login ghcr.io \
+              --username "${{ secrets.GHCR_USERNAME }}" \
+              --password-stdin
             mkdir -p ./env & echo "${{secrets.SPRING_ENV}}" > ./env/spring.env
             docker-compose stop
             docker-compose rm ${{secrets.SERVICES_EXCEPT_DB}}
