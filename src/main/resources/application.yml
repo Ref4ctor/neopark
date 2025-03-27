@@ -15,7 +15,7 @@ spring:
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: "${DB_URL:jdbc:mysql://localhost:3308/mydatabase}"  # 테스트용 DB URL (실제 테스트 환경에 맞게 수정)
+    url: "${DB_URL:jdbc:mysql://mysql:3306/mydatabase}"  # 테스트용 DB URL (실제 테스트 환경에 맞게 수정)
     username: "${DB_USERNAME:dbuser}"       # DB 사용자
     password: "${DB_PASSWORD:dbpassword}"   # DB 비밀번호
 
