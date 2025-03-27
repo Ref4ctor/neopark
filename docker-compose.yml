@@ -18,7 +18,7 @@ services:
     depends_on:
       - mysql
     env_file:
-      - ./spring.env
+      - .env/spring.env
     environment:
       TZ: Asia/Seoul
     ports:
